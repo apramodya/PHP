@@ -5,6 +5,17 @@
  * Date: 8/6/17
  * Time: 10:06 PM
  */
+include 'database.php';
+
+// get question
+$number = $_GET['n'];
+$query = "SELECT * FROM questions WHERE question_number = $number";
+$result = $mysqli->query($query) or die($mysqli->error.__LINE__);
+$question = $result->fetch_assoc();
+
+// get choices
+$query = "SELECT * FROM choices WHERE question_number = $number";
+$choices = $mysqli->query($query) or die($mysqli->error.__LINE__);
 ?>
 
 <html>
@@ -32,14 +43,13 @@ p{
     <h2 style="border-bottom: 3px gray solid" class="text-center">Welcome to the Question Bank</h2>
     <div class="">
         <div class="container" style="background: #f4f4f4">
-            <h4>Question 1 of 5</h4>
-        <p>What does PHP stands for? </p>
+            <h4>Question <?php echo $number ?> of 5</h4>
+        <p><?php echo $question['text'] ?> </p>
         <form method="post" action="process.php">
             <ul>
-                <li><input name="choice" type="radio" value="1"> PHP Hypertext Preprocessor</li>
-                <li><input name="choice" type="radio" value="1"> Personal Home Page</li>
-                <li><input name="choice" type="radio" value="1"> Private Home Page</li>
-                <li><input name="choice" type="radio" value="1"> Personal Hypertext Preprocessor</li>
+                <?php  while ($row = $choices->fetch_assoc()): ?>
+                    <li><input name="choice" type="radio" value="<?php echo $row['id']; ?>"><?php echo " ".$row['text']?></li>
+                <?php endwhile; ?>
             </ul>
             <input type="submit" value="Submit" class="btn bg-info">
         </form>
