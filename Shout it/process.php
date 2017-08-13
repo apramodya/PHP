@@ -12,7 +12,7 @@ if (isset($_POST['submit'])){
     $user = mysqli_real_escape_string($con, $_POST['user']);
     $message = mysqli_real_escape_string($con, $_POST['message']);
 
-    date_default_timezone_set('Sri Lanka');
+    date_default_timezone_set('Asia/Colombo');
     $time = date('h:m:s',time());
 
     if (!isset($user) || $user == '' || !isset($message) || $message == '') {

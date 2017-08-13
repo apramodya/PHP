@@ -5,6 +5,9 @@
  * Date: 8/6/17
  * Time: 10:23 PM
  */
+
+session_start();
+
 ?>
 
 <html>
@@ -35,8 +38,9 @@
     <div class="container" style="background: #f4f4f4">
         <h2>You have completed the Quiz</h2>
         <p>Congratulations!</p>
-        <p>Final Score: 5</p>
-        <a href="questions.php?n=1" class="btn btn-default">Take Again</a>
+        <p>Final Score: <?php echo $_SESSION['score']; ?></p>
+        <?php session_destroy(); ?>
+<a href="questions.php?n=1" class="btn btn-default">Take Again</a>
     </div>
 </div>
 </body>

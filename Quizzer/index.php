@@ -32,6 +32,9 @@ $total = $result->num_rows;
 <body>
     <h2 style="border-bottom: 3px gray solid" class="text-center">Welcome to the Question Bank</h2>
     <div class="container" style="border-bottom: 3px gray solid">
+        <a href="add.php" class="start btn btn-default">Add Questions</a>
+    </div>
+    <div class="container" style="border-bottom: 3px gray solid">
         <p>This checks your PHP knowledge</p>
         <ul>
             <li><strong>Number of Questions: </strong><?php echo $total?></li>
