@@ -59,7 +59,7 @@ $next = $total+1;
     </style>
 </head>
 <body>
-    <h2 style="border-bottom: 3px gray solid" class="text-center">Welcome to the Question Bank</h2>
+    <h2 style="border-bottom: 3px gray solid" class="text-center"><a href="index.php" style="text-decoration: none; color: black">Welcome to the Question Bank</a></h2>
     <div class="container">
         <h3>Add Questions</h3>
         <?php if (isset($msg)) echo '<p>'.$msg.'</p>'?>
@@ -97,6 +97,7 @@ $next = $total+1;
                 <input type="reset" name="reset" class="btn btn-primary">
             </div>
         </form>
+
     </div>
 </body>
 </html>

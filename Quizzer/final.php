@@ -40,7 +40,8 @@ session_start();
         <p>Congratulations!</p>
         <p>Final Score: <?php echo $_SESSION['score']; ?></p>
         <?php session_destroy(); ?>
-<a href="questions.php?n=1" class="btn btn-default">Take Again</a>
+        <a href="questions.php?n=1" class="btn btn-default">Take Again</a>
+        <a href="index.php" class="btn btn-default">Home</a>
     </div>
 </div>
 </body>

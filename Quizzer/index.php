@@ -46,10 +46,10 @@ $total = $result->num_rows;
     <div class="container" style="border-bottom: 3px gray solid">
         <p>This checks your HTML knowledge</p>
         <ul>
-            <li><strong>Number of Questions: </strong>10</li>
+            <li><strong>Number of Questions: </strong><?php echo $total?></li>
             <li><strong>Type: </strong>Multiple Questions</li>
-            <li><strong>Estimated Time: </strong>10 minutes</li>
-        </ul>
+            <li><strong>Estimated Time: </strong><?php echo $total* 0.5 ?> minutes</li>
+        </ul> 
         <a href="questions.php?n=1" class="start">Start Quiz</a>
     </div>
 </body>
