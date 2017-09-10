@@ -12,6 +12,9 @@ body {
     font-family: Georgia, "Times New Roman", Times, serif;
     color: #555;
 }
+a:link{
+    text-decoration: none;
+}
 
 h1, .h1,
 h2, .h2,
@@ -51,6 +54,7 @@ h6, .h6 {
     padding: 1rem;
     font-weight: 500;
     color: #cdddeb;
+    text-decoration: none;
 }
 .nav-link:hover,
 .nav-link:focus {
