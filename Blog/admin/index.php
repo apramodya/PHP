@@ -1,7 +1,7 @@
 <?php include 'includes/header.php'; ?>
 <?php
 $db = new Database();
-$query = "select posts.*, categories.name from posts inner join categories on posts.category = categories.id";
+$query = "select posts.*, categories.name from posts inner join categories on posts.category = categories.id order by posts.title";
 $posts = $db->select($query);
 
 $query = "select * from categories";

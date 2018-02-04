@@ -19,8 +19,28 @@ $query = "select * from categories";
 $categories = $db->select($query);
 
 ?>
+<?php
+if (isset($_POST['submit'])){
+    $title = mysqli_real_escape_string($db->link, $_POST['title']);
+    $body = mysqli_real_escape_string($db->link, $_POST['body']);
+    $category = mysqli_real_escape_string($db->link, $_POST['category']);
+    $author = mysqli_real_escape_string($db->link, $_POST['author']);
+    $tags = mysqli_real_escape_string($db->link, $_POST['tags']);
 
-<form method="post" action="edit_post.php">
+    if ($title == "" || $body == "" || $category == "" || $author == ""){
+        $error = "Please fill all the fields";
+
+    }
+    else{
+        $query = "UPDATE posts
+                  SET title = '$title', body = '$body', category = '$category', author = '$author', tags = '$tags'
+                  WHERE id = $id";
+        $update_row = $db->update($query);
+
+    }
+}
+?>
+<form method="post" action="edit_post.php?id=<?php echo $id ?>">
     <div class="form-group">
         <label >Post Title</label>
         <input type="text" name="title" class="form-control" placeholder="Enter Title" value="<?php echo $post['title'];?>">
@@ -36,7 +56,7 @@ $categories = $db->select($query);
         <select class="form-control" name="category">
             <?php while ($row = $categories->fetch_assoc()): ?>
                 <?php if ($row['id'] == $post['category']) $selected = 'selected'; else $selected = ''; ?>
-                <option <?php echo $selected ?> ><?php echo $row['name']; ?></option>
+                <option value="<?php echo $row['id'];?>" <?php echo $selected ?> ><?php echo $row['name']; ?></option>
             <?php endwhile; ?>
         </select>
     </div>

@@ -11,6 +11,7 @@ include 'helpers/format_helper.php';
 
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,4 +50,8 @@ include 'helpers/format_helper.php';
 
     <div class="row">
 
-        <div class="col-sm-8 blog-main">
+        <div class="col-sm-12 blog-main">
+            <?php if (isset($_GET['msg'])): ?>
+                <div class="alert alert-success"><?php echo "done"
+                //htmlentities($_GET['msg']); ?></div>
+            <?php endif; ?>

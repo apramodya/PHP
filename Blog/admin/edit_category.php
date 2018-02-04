@@ -19,11 +19,23 @@ $query = "select * from categories";
 $categories = $db->select($query);
 
 ?>
+<?php
 
-<form method="post" action="edit_category.php">
+if (isset($_POST['submit'])){
+    $category = mysqli_real_escape_string($db->link, $_POST['category']);
+
+    if ($category == '' ) $error = "Please add a category";
+    else{
+        $query = "UPDATE categories SET name = '$category' WHERE id = '$id'";
+        $update_row = $db->update($query);
+
+    }
+}
+?>
+<form method="post" action="edit_category.php?id=<?php echo $id?>">
     <div class="form-group">
         <label >Category Name</label>
-        <input type="text" name="title" class="form-control" placeholder="Enter Title" value="<?php echo $category['name'];?>">
+        <input type="text" name="category" class="form-control" placeholder="Enter Title" value="<?php echo $category['name'];?>">
     </div>
     <button type="submit" name="submit" class="btn btn-default">Submit</button>
     <a href="index.php" class="btn btn-default">Cancel</a>
