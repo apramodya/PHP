@@ -21,10 +21,10 @@ class UserController extends Controller
         $user = new User([
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password')),
-//             'remember_token' => $request->input('remember_token')
         ]);
 
         $user->save();
+        Auth::login($user);
 
         return redirect()->route('product.index');
     }
@@ -51,7 +51,7 @@ class UserController extends Controller
 
     public function getLogout(){
         Auth::logout();
-        return redirect()->back();
+        return redirect()->route('user.signin');
 
     }
 }
